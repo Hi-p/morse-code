@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="모스부호 변환기 - 텍스트를 모스부호로, 모스부호를 텍스트로 변환하고 소리로 들어보세요.">
+    <title>모스부호 변환기 | Morse Code Translator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Flash overlay for visual effect -->
+    <div id="flash-overlay" class="flash-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-dot">●</span>
+                <span class="logo-dash">━</span>
+                <span class="logo-text">MORSE</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">모스부호란?</a>
+                <a href="#principle">원리</a>
+                <a href="#converter">변환기</a>
+                <a href="#chart">차트</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero">
+        <div class="hero-bg-animation">
+            <div class="morse-float morse-float-1">· · · — — — · · ·</div>
+            <div class="morse-float morse-float-2">— · — · — —</div>
+            <div class="morse-float morse-float-3">· — · · · —</div>
+            <div class="morse-float morse-float-4">— — · · — ·</div>
+            <div class="morse-float morse-float-5">· · — — · ·</div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">· — — ·&nbsp;&nbsp;·&nbsp;&nbsp;· — ·&nbsp;&nbsp;· ·&nbsp;&nbsp;— — —&nbsp;&nbsp;— ·
+                ·</div>
+            <h1>모스부호의 세계</h1>
+            <p class="hero-subtitle">점(·)과 선(—) 두 가지 신호로 이루어진<br>인류 최초의 디지털 통신 시스템</p>
+            <a href="#converter" class="hero-cta">
+                <span>변환기 사용하기</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17l9.2-9.2M17 17V7H7" />
+                </svg>
+            </a>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-dot"></div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">— — —&nbsp;&nbsp;· —&nbsp;&nbsp;— · · ·&nbsp;&nbsp;— — —</span>
+                <h2>모스부호란?</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card about-card-main">
+                    <div class="about-card-icon">📡</div>
+                    <h3>정의</h3>
+                    <p>모스부호(Morse Code)는 <strong>짧은 신호(·, dit)</strong>와 <strong>긴 신호(—, dah)</strong>의 조합으로 알파벳, 숫자,
+                        문장부호를 표현하는 통신 부호입니다. 1837년 <strong>새뮤얼 모스(Samuel Morse)</strong>가 전신기와 함께 발명했습니다.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">⚡</div>
+                    <h3>역사</h3>
+                    <p>1844년 최초의 전신 메시지 <em>"What hath God wrought"</em>가 워싱턴 D.C.에서 볼티모어로 전송되었습니다. 이후 100년 넘게 해상 통신의
+                        핵심으로 사용되었습니다.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">🆘</div>
+                    <h3>SOS 신호</h3>
+                    <p>가장 유명한 모스부호인 <strong>SOS(· · · — — — · · ·)</strong>는 1906년 국제 조난 신호로 채택되었으며, 타이타닉호 침몰 시에도
+                        사용되었습니다.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon">🌐</div>
+                    <h3>현재</h3>
+                    <p>오늘날에도 아마추어 무선통신, 항공, 접근성 보조 기술 등에서 활용되고 있으며, 일부 해군에서는 여전히 모스부호 훈련을 실시합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principle Section -->
+    <section id="principle" class="section principle-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">· — · ·&nbsp;&nbsp;· ·&nbsp;&nbsp;— — ·&nbsp;&nbsp;· · · ·&nbsp;&nbsp;—</span>
+                <h2>어떻게 작동할까?</h2>
+            </div>
+            <div class="principle-content">
+                <div class="principle-rules">
+                    <div class="rule-item">
+                        <div class="rule-visual">
+                            <div class="signal-dot"></div>
+                        </div>
+                        <div class="rule-text">
+                            <h4>점 (Dit) <span class="mono">·</span></h4>
+                            <p>기본 단위. 짧은 신호 1단위 길이</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-visual">
+                            <div class="signal-dash"></div>
+                        </div>
+                        <div class="rule-text">
+                            <h4>선 (Dah) <span class="mono">—</span></h4>
+                            <p>점의 3배 길이. 긴 신호</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-visual">
+                            <div class="signal-dot"></div>
+                            <div class="signal-gap-small"></div>
+                            <div class="signal-dot"></div>
+                        </div>
+                        <div class="rule-text">
+                            <h4>신호 간 간격</h4>
+                            <p>같은 글자 내 신호 사이: 1단위 간격</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-visual">
+                            <div class="signal-dot"></div>
+                            <div class="signal-gap-medium"></div>
+                            <div class="signal-dash"></div>
+                        </div>
+                        <div class="rule-text">
+                            <h4>글자 간 간격</h4>
+                            <p>글자와 글자 사이: 3단위 간격</p>
+                        </div>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-visual">
+                            <div class="signal-dot"></div>
+                            <div class="signal-gap-large"></div>
+                            <div class="signal-dash"></div>
+                        </div>
+                        <div class="rule-text">
+                            <h4>단어 간 간격</h4>
+                            <p>단어와 단어 사이: 7단위 간격</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="principle-example">
+                    <h3>예시: "SOS" 변환</h3>
+                    <div class="example-breakdown">
+                        <div class="example-letter">
+                            <span class="letter">S</span>
+                            <span class="morse-code">· · ·</span>
+                            <div class="waveform">
+                                <div class="wave-dot"></div>
+                                <div class="wave-dot"></div>
+                                <div class="wave-dot"></div>
+                            </div>
+                        </div>
+                        <div class="example-separator">
+                            <span class="sep-label">3단위</span>
+                        </div>
+                        <div class="example-letter">
+                            <span class="letter">O</span>
+                            <span class="morse-code">— — —</span>
+                            <div class="waveform">
+                                <div class="wave-dash"></div>
+                                <div class="wave-dash"></div>
+                                <div class="wave-dash"></div>
+                            </div>
+                        </div>
+                        <div class="example-separator">
+                            <span class="sep-label">3단위</span>
+                        </div>
+                        <div class="example-letter">
+                            <span class="letter">S</span>
+                            <span class="morse-code">· · ·</span>
+                            <div class="waveform">
+                                <div class="wave-dot"></div>
+                                <div class="wave-dot"></div>
+                                <div class="wave-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Converter Section -->
+    <section id="converter" class="section converter-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">— · — ·&nbsp;&nbsp;— — —&nbsp;&nbsp;— · ·&nbsp;&nbsp;·</span>
+                <h2>모스부호 변환기</h2>
+            </div>
+
+            <!-- Mode Toggle -->
+            <div class="mode-toggle-wrapper">
+                <button id="mode-text-to-morse" class="mode-btn active" data-mode="text-to-morse">
+                    텍스트 → 모스부호
+                </button>
+                <button id="mode-morse-to-text" class="mode-btn" data-mode="morse-to-text">
+                    모스부호 → 텍스트
+                </button>
+            </div>
+
+            <div class="converter-grid">
+                <!-- Input -->
+                <div class="converter-panel input-panel">
+                    <div class="panel-header">
+                        <h3 id="input-label">텍스트 입력</h3>
+                        <button id="clear-input-btn" class="icon-btn" title="지우기">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 6L6 18M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <textarea id="input-text" placeholder="변환할 텍스트를 입력하세요" rows="6"></textarea>
+                    <div class="panel-footer">
+                        <span id="char-count">0자</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="converter-controls">
+                    <button id="convert-btn" class="convert-btn" title="변환">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Output -->
+                <div class="converter-panel output-panel">
+                    <div class="panel-header">
+                        <h3 id="output-label">모스부호 출력</h3>
+                        <button id="copy-output-btn" class="icon-btn" title="복사">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="output-text" class="output-display">
+                        <span class="output-placeholder">변환 결과가 여기에 표시됩니다</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sound Controls -->
+            <div class="sound-controls">
+                <div class="sound-controls-header">
+                    <h3>🔊 사운드 설정</h3>
+                </div>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <label for="speed-slider">
+                            <span>재생 속도</span>
+                            <span id="speed-value" class="control-value">15 WPM</span>
+                        </label>
+                        <input type="range" id="speed-slider" min="5" max="35" value="15" step="1">
+                        <div class="range-labels">
+                            <span>느림</span>
+                            <span>빠름</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="freq-slider">
+                            <span>주파수</span>
+                            <span id="freq-value" class="control-value">600 Hz</span>
+                        </label>
+                        <input type="range" id="freq-slider" min="300" max="1000" value="600" step="50">
+                        <div class="range-labels">
+                            <span>낮음</span>
+                            <span>높음</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="volume-slider">
+                            <span>볼륨</span>
+                            <span id="volume-value" class="control-value">70%</span>
+                        </label>
+                        <input type="range" id="volume-slider" min="0" max="100" value="70" step="5">
+                        <div class="range-labels">
+                            <span>음소거</span>
+                            <span>최대</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="play-controls">
+                    <button id="play-btn" class="play-btn">
+                        <svg id="play-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        <svg id="stop-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"
+                            style="display:none;">
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                        </svg>
+                        <span id="play-btn-text">재생</span>
+                    </button>
+                    <button id="reset-settings-btn" class="reset-btn" title="기본값으로 초기화">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 1 3.5-7.1L3 8" />
+                            <path d="M3 3v5h5" />
+                        </svg>
+                        <span>기본값</span>
+                    </button>
+                    <div id="signal-indicator" class="signal-indicator">
+                        <div class="signal-light"></div>
+                        <span id="current-char" class="current-char"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section id="chart" class="section chart-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">— · — ·&nbsp;&nbsp;· · · ·&nbsp;&nbsp;· —&nbsp;&nbsp;· — ·&nbsp;&nbsp;—</span>
+                <h2>모스부호 차트</h2>
+                <p class="section-desc">글자를 클릭하면 소리를 들을 수 있습니다</p>
+            </div>
+            <div class="chart-tabs">
+                <button class="chart-tab active" data-tab="alphabet">알파벳</button>
+                <button class="chart-tab" data-tab="numbers">숫자</button>
+                <button class="chart-tab" data-tab="punctuation">특수문자</button>
+                <button class="chart-tab" data-tab="korean_cons">한글 자음</button>
+                <button class="chart-tab" data-tab="korean_vowels">한글 모음</button>
+            </div>
+            <div id="chart-grid" class="chart-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-dot">●</span>
+                    <span class="logo-dash">━</span>
+                    <span class="logo-text">MORSE</span>
+                </div>
+                <p class="footer-morse">
+                    — · · ·&nbsp;&nbsp;— · — —&nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;— · ·&nbsp;&nbsp;· — · —
+                    ·&nbsp;&nbsp;— — —&nbsp;&nbsp;— · ·&nbsp;&nbsp;·
+                </p>
+                <p class="footer-text">© 2026 Morse Code Translator. Made with · — — ·</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
